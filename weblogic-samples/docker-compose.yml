@@ -1,0 +1,53 @@
+# Author: Bryan Sazon <john.bryan.j.sazon@accenture.com>
+
+version: '2'
+
+networks:
+  &network wlsnet:
+    driver: bridge
+
+services:
+
+  # Deploys the AdminServer
+  adminserver:
+    image: dockerhub.accenture.com/adop-afpo/oracle-weblogic:1221-app-jms-domain
+    restart: always
+    environment:
+      DS_NAME: "MySqlDS"
+      DS_DB_TYPE: "mysql"
+      DS_DB_NAME: "docker-db"
+      DS_JNDI_NAME: "jdbc/MySqlDS"
+      DS_JDBC_DRIVER: "com.mysql.jdbc.Driver"
+      DS_JDBC_URL: "jdbc:mysql://database:3306/docker-db"
+      DS_DB_HOST: "database"
+      DS_DB_PORT: "3306"
+      DS_DB_USER: "root"
+      DS_DB_PASSWORD: "root"
+    networks:
+      - *network
+
+  # Deploys the Database Service
+  database:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "mysql"
+      MYSQL_PASSWORD: "mysqlpwd"
+      MYSQL_DATABASE: "docker-db"
+    ports:
+       - "3306:3306"
+    networks:
+       - *network
+
+  # WebTier for load balancing requests to cluster
+  webtier:
+    image: dockerhub.accenture.com/adop-afpo/oracle-webtier:1221-webtier-apache
+    restart: always
+    networks:
+      - *network 
+    environment:
+      WEBLOGIC_CLUSTER: "adminserver:8001"
+    ports:
+      - "80:80"
+
