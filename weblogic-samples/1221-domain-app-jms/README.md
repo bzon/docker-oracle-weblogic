@@ -2,13 +2,14 @@
 
 ## Building the Image
 
-----
+**Before following the steps below** - Make sure that you have already have built the docker image `1221-domain`. If not, please follow the guide from [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/dockerfiles) first!
+
 - Build using the default/sample application 
 	```bash
 	docker build -t 1221-app-jms-domain .
 	```
 
-- Build using a custom application, *imagine* you have a helloWorld application and you put the war file under container-scripts directory
+- (Optional) - Build using a custom application, *imagine* you have a helloWorld application and you put the war file under container-scripts directory
 
 	```bash
 	# Your project directory structure
@@ -44,19 +45,58 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 - Docker Compose 1.7 or higher
 - 2 CPU 8 GB RAM
 
-### Provisioning the Docker way stack topology
-----
-- Launch the stack
+### Using Docker run
+---
+- Using the default derby datasource
 
 	```bash
-	docker-compose -f compose-dockerway/docker-compose.yml up -d
+	docker run -p 8001:8001 -d 1221-app-jms-domain
 	```
 
-- Scaling the AdminServer (Optional)
+- Connecting weblogic container to a MySQL database
+
+	- Deploy MySQL
+	```bash
+	docker run --name mysql \
+		-e MYSQL_ROOT_PASSWORD=root \
+		-e MYSQL_USER=mysql \
+		-e MYSQL_PASSWORD=mysqlpwd \
+		-e MYSQL_DATABASE=dockerdb \
+		-p 3306:3306 \
+		-d mysql:5.7
+	```
+	- Deploy Weblogic and link it to MySQL
+	```bash
+	docker run --name adminserver \
+		-e DS_NAME="mysqlds" \
+		-e DS_DB_TYPE="mysql" \
+		-e DS_DB_NAME="dockerdb" \
+		-e DS_JNDI_NAME="jdbc/MySqlDS" \
+		-e DS_JDBC_DRIVER="com.mysql.jdbc.Driver" \
+		-e DS_DB_HOST="mysql" \
+		-e "DS_DB_USER=root" \
+		-e DS_JDBC_URL="jdbc:mysql://mysql:3306/dockerdb" \
+		-e DS_DB_PASSWORD="root" \
+		-e DS_DB_PORT="3306" \
+		-p 8001:8001 \
+		-d 1221-app-jms-doain
+	```
+	
+### Using Docker compose or simplifying the above.
+----
+- Launch the stack.
+
+	```bash
+	docker-compose up -d
+	```
+
+- Scaling (Optional)
 	
 	```bash
 	docker-compose scale adminserver=3
+	docker-compose scale mysql=2
 	```
+	
 ### How to Access your environment
 ----
 Using your web browser, navigate to `http://<your.host.ip>/console` and login using `weblogic/welcome1`.  
