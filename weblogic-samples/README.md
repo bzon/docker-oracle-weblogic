@@ -1,6 +1,7 @@
-# Example Image of Weblogic Domain with a Deployed Application and JMS resources
+# A Weblogic Domain with a Deployed Sample Application and JMS resources
 
 ## Building the Image
+
 ----
 - Build using the default/sample application 
 	```bash
@@ -38,7 +39,7 @@ Running this docker compose file creates a stack of Oracle Weblogic, MySQL Datab
 Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/products/middleware/cloud-app-foundation/weblogic/weblogic-server-on-docker-wp-2742665.pdf) for more information.
 
 ### Host Requirements
-
+----
 - Docker Engine 1.10 or higher
 - Docker Compose 1.7 or higher
 - 2 CPU 8 GB RAM
@@ -56,24 +57,6 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 	```bash
 	docker-compose scale adminserver=3
 	```
-
-### Provisioning using Docker 1.12
-
-```bash
-docker run -it -d -p 5000:5000 -e HOST=${PUBLIC_HOSTNAME} -e PORT=5000 -v /var/run/docker.sock:/var/run/docker.sock manomarks/visualizer
-```
-
-```bash
-# Create docker network
-docker network create demonet -d overlay
-
-# Create myqsl service
-docker service create --name mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=mysql -e MYSQL_PASSWORD=mysqlpwd -e MYSQL_DATABASE=dockerdb -p 3306:3306 --network demo mysql:5.7
-
-# Create weblogic service
-docker service create --name adminserver -e DS_NAME="mysqlds" -e DS_DB_TYPE="mysql" -e DS_DB_NAME="dockerdb" -e DS_JNDI_NAME="jdbc/MySqlDS" -e DS_JDBC_DRIVER="com.mysql.jdbc.Driver" -e DS_DB_HOST="mysql" -e "DS_DB_USER=root" -e DS_JDBC_URL="jdbc:mysql://mysql:3306/dockerdb" -e DS_DB_PASSWORD="root" -e DS_DB_PORT="3306" -p 8001:8001 --network demo dockerhub.accenture.com/adop-afpo/oracle-weblogic:1221-app-jms-domain
-```
-
 ### How to Access your environment
 ----
 Using your web browser, navigate to `http://<your.host.ip>/console` and login using `weblogic/welcome1`.  
