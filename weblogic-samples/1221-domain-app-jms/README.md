@@ -5,11 +5,11 @@ This is a sample project that extends the base Weblogic domain image to have:
 1. A sample.war deployed into it.
 2. A datasource/jms configuration.
 
-### Requirement
+## Requirement
 
 **Before following the steps below** - Make sure that you have already have built the docker image `1221-domain`. If not, please follow the guide from [Building the Domain image] (https://github.com/bzon/docker-oracle-weblogic/tree/master/weblogic-samples/1221-domain) first!
 
-### Building the Image
+## Building the Image
 - Build using the default/sample application 
 	```bash
 	docker build -t 1221-app-jms-domain .
