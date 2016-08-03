@@ -48,13 +48,16 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 - 2 CPU 8 GB RAM
 
 ### Using Docker run
-- Using the default derby datasource
+- Option A - Run the weblogic container without using an external database.
 
 	```bash
 	docker run -p 8001:8001 -d 1221-app-jms-domain
 	```
+	Access the weblogic console. 
+	http://<your.host.ip>:8001/console - to access the administration console.  
+	http://<your.host.ip>:8001/sample/ - to access the sample application.  
 
-- Connecting weblogic container to a MySQL database
+- Option B - Connecting weblogic container to a MySQL database
 
 	- Deploy MySQL
 	```bash
@@ -82,7 +85,7 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 		-p 8001:8001 \
 		-d 1221-app-jms-doain
 	```
-	
+
 ### Using Docker compose or simplifying orchestration
 - Launch the stack.
 
@@ -97,6 +100,3 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 	docker-compose scale mysql=2
 	```
 	
-### How to Access your environment
-Using your web browser, navigate to `http://<your.host.ip>/console` and login using `weblogic/welcome1`.  
-Navigate to `http://<your.host.ip>/sample` to view the sample application.
