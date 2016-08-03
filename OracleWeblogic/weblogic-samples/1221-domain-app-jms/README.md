@@ -68,13 +68,14 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 	- Deploy Weblogic and link it to MySQL
 	```bash
 	docker run --name adminserver \
+		--link mysql:mysql \
 		-e DS_NAME="mysqlds" \
 		-e DS_DB_TYPE="mysql" \
 		-e DS_DB_NAME="dockerdb" \
 		-e DS_JNDI_NAME="jdbc/MySqlDS" \
 		-e DS_JDBC_DRIVER="com.mysql.jdbc.Driver" \
 		-e DS_DB_HOST="mysql" \
-		-e "DS_DB_USER=root" \
+		-e DS_DB_USER="root" \
 		-e DS_JDBC_URL="jdbc:mysql://mysql:3306/dockerdb" \
 		-e DS_DB_PASSWORD="root" \
 		-e DS_DB_PORT="3306" \
