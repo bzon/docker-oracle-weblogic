@@ -79,7 +79,7 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 		-e DS_DB_PASSWORD="root" \
 		-e DS_DB_PORT="3306" \
 		-p 8001:8001 \
-		-d 1221-app-jms-doain
+		-d 1221-app-jms-domain
 	```
 
 ### Using Docker compose or simplifying orchestration
