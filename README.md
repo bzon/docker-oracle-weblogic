@@ -20,13 +20,17 @@ You will need it to download the Oracle installer binaries as you follow the ste
 
 ## [**Layer 1**] Oracle JDK
 
-Build  `oracle/jdk:8` based from [**Layer 0**] `oraclelinux`
+1. Download the Oracle JDK 8 installer.
+
+2. Build  `oracle/jdk:8` based from [**Layer 0**] `oraclelinux`
 
 Follow the steps [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleJDK)
 
 ## [**Layer 2**] Oracle Weblogic Server
 
-Build `oracle/weblogic:12.1.3-developer` base image from [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleWeblogic/dockerfiles)
+1. Download the Weblogic installer.
+
+2. Build `oracle/weblogic:12.1.3-developer` base image from [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleWeblogic/dockerfiles)
 
 Example: Run `./buildDockerImage.sh -v 12.2.1 -d` to build a developer installation type weblogic image.
 
