@@ -1,7 +1,3 @@
-# Sypnosis
-
-An extension of the [Oracle official Weblogic docker project] (https://github.com/oracle/docker-images/OracleWeblogic).
-
 WebLogic on Docker
 ===============
 Sample Docker configurations to facilitate installation, configuration, and environment setup for DevOps users. This project includes quick start [dockerfiles](dockerfiles/) and [samples](samples/) for both WebLogic 12.1.3 and 12.2.1 based on Oracle Linux and Oracle JDK 8 (Server).
