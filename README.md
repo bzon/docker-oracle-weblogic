@@ -1,5 +1,7 @@
 # Oracle Weblogic on Docker!
 
+An extension of the [Oracle official Weblogic docker project] (https://github.com/oracle/docker-images/OracleWeblogic).
+
 ![Docker](https://raw.githubusercontent.com/bzon/docker-oracle-weblogic/master/img/docker.png)
 
 ## Quickstart Reference
