@@ -5,7 +5,7 @@ This is a sample project that extends the base Weblogic domain image to have:
 1. A sample.war deployed into it.
 2. A datasource/jms configuration.
 
-**Before following the steps below** - Make sure that you have already have built the docker image `1221-domain`. If not, please follow the guide from [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/dockerfiles) first!
+**Before following the steps below** - Make sure that you have already have built the docker image `1221-domain`. If not, please follow the guide from [Building the Domain image] (https://github.com/bzon/docker-oracle-weblogic/tree/master/weblogic-samples/1221-domain) first!
 
 ## Building the Image
 - Build using the default/sample application 
@@ -53,10 +53,6 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 	```bash
 	docker run -p 8001:8001 -d 1221-app-jms-domain
 	```
-	Access the weblogic console. 
-	http://<your.host.ip>:8001/console - to access the administration console.  
-	http://<your.host.ip>:8001/sample/ - to access the sample application.  
-
 - Option B - Connecting weblogic container to a MySQL database
 
 	- Deploy MySQL
@@ -100,3 +96,11 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 	docker-compose scale mysql=2
 	```
 	
+### Access Information
+
+Information | Value
+------------ | -------------
+Administrator User | weblogic
+Administrator Password | Your administrator defined password from here [Building the Domain image] (https://github.com/bzon/docker-oracle-weblogic/tree/master/weblogic-samples/1221-domain
+Administrator URL | http://<your.host.ip>:8001/console/
+Sample WebApplication | http://<your.host.ip>:8001/sample/
