@@ -5,7 +5,10 @@ This Dockerfile extends the Oracle WebLogic image by creating a sample empty dom
 Util scripts are copied into the image enabling users to plug NodeManager automatically into the AdminServer running on another container.
 
 # How to build and run
-First make sure you have built **oracle/weblogic:12.2.1-developer**. Now to build this sample, run:
+
+First make sure you have built the Docker iamge **oracle/weblogic:12.2.1-developer** by following the guide in [dockerfiles] (https://github.com/bzon/docker-oracle-weblogic/tree/master/dockerfiles). 
+
+Now to build this sample, run:
 
         $ docker build -t 1221-domain --build-arg ADMIN_PASSWORD=welcome1 .
 
