@@ -1,6 +1,8 @@
 # General Usage Guide
 
-Docker build layers of the container.
+Follow the step by step (layer by layer) to create, build and run your own weblogic image.
+
+For your reference, the following figure shows the application layer of what you will build.
 
 ![Weblogic Layer](https://raw.githubusercontent.com/bzon/docker-oracle-weblogic/master/img/weblogic.png)
 
