@@ -1,9 +1,13 @@
-# A Weblogic Domain with a Deployed Sample Application and JMS resources
+# Overview
 
-## Building the Image
+This is a sample project that extends the base Weblogic domain image to have:
+
+1. A sample.war deployed into it.
+2. A datasource/jms configuration.
 
 **Before following the steps below** - Make sure that you have already have built the docker image `1221-domain`. If not, please follow the guide from [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/dockerfiles) first!
 
+## Building the Image
 - Build using the default/sample application 
 	```bash
 	docker build -t 1221-app-jms-domain .
@@ -34,19 +38,16 @@
 	```
 	
 ## Quickstart Guide using Docker compose
-
 Running this docker compose file creates a stack of Oracle Weblogic, MySQL Database, and an Apache Httpd container for load balancing in a single host. The design is to follow the "Docker way" topology container deployment.
 
 Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/products/middleware/cloud-app-foundation/weblogic/weblogic-server-on-docker-wp-2742665.pdf) for more information.
 
 ### Host Requirements
-----
 - Docker Engine 1.10 or higher
 - Docker Compose 1.7 or higher
 - 2 CPU 8 GB RAM
 
 ### Using Docker run
----
 - Using the default derby datasource
 
 	```bash
@@ -82,8 +83,7 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 		-d 1221-app-jms-doain
 	```
 	
-### Using Docker compose or simplifying the above.
-----
+### Using Docker compose or simplifying orchestration
 - Launch the stack.
 
 	```bash
@@ -98,6 +98,5 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 	```
 	
 ### How to Access your environment
-----
 Using your web browser, navigate to `http://<your.host.ip>/console` and login using `weblogic/welcome1`.  
 Navigate to `http://<your.host.ip>/sample` to view the sample application.
