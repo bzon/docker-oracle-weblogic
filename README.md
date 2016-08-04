@@ -32,7 +32,7 @@ Follow the steps [here] (https://github.com/bzon/docker-oracle-weblogic/tree/mas
 
 1. Download the Weblogic installer.
 
-2. Build `oracle/weblogic:12.1.3-developer` base image from [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleWeblogic/dockerfiles)
+2. Build `oracle/weblogic:12.2.1-developer` base image from [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleWeblogic/dockerfiles)
 
 Example: Run `./buildDockerImage.sh -v 12.2.1 -d` to build a developer installation type weblogic image.
 
