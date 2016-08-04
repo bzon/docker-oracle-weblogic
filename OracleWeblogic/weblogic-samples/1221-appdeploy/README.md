@@ -13,7 +13,7 @@ To start the Admin Server with the application automatically deployed, run:
 
         $ docker run -d -p 80:8001 1221-appdeploy
 
-To access the sample application, go to **http://localhost:8001/sample**.
+To access the sample application, go to **http://localhost/sample**.
 
 # Copyright
 Copyright (c) 2015 Oracle and/or its affiliates. All rights reserved.
