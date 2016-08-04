@@ -102,7 +102,7 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 Information | Value
 ------------ | -------------
 Administrator User | weblogic
-Administrator Password | Your administrator defined password from here [Building the Domain image] (https://github.com/bzon/docker-oracle-weblogic/tree/master/weblogic-samples/1221-domain
+Administrator Password | Your administrator defined password from here [Building the Domain image](https://github.com/bzon/docker-oracle-weblogic/tree/master/weblogic-samples/1221-domain
 Proxied Administrator URL | http://<your.host.ip>/console/ if you used `docker-compose`
 Proxied Sample WebApplication | http://<your.host.ip>/sample/ if you used `docker-compose`
 Administrator URL | http://<your.host.ip>:8001/console/ if you used `docker run`
