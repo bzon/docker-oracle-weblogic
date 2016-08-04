@@ -42,8 +42,12 @@ Build `1221-domain` image based from the `oracle/weblogic:12.1.3-developer`.
 
 Follow the steps [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleWeblogic/weblogic-samples/1221-domain)
 
-## [**Layer 4**] Oracle Weblogic Server Domain with Sample Application and JMS configuration.
+## [**Layer 4**] Oracle Weblogic Server Domain with Sample Application or with App and JMS configuration.
 
-Build the sample `1221-app-jms-domain` image based from the `1221-domain` image.
+Option 1 - Build the sample `1221-appdeploy` image based from the `1221-domain` image.
 
-Follow the steps [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleWeblogic/weblogic-samples/1221-domain-app-jms)
+Follow the steps [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleWeblogic/weblogic-samples/1221-appdeploy)
+
+Option 2 - Build the sample `1221-app-jms-domain` image based from the `1221-domain` image.
+
+Follow the steps [here] (https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleWeblogic/weblogic-samples/1221-app-jms-domain)
