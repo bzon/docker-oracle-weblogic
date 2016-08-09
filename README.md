@@ -6,7 +6,7 @@ An extension of the [Oracle official Weblogic docker project] (https://github.co
 
 ## Quickstart Reference
 
-Install docker engine and docker compose and follow this [quick start guide](https://github.com/bzon/docker-oracle-weblogic/blob/master/OracleWeblogic/weblogic-samples/1221-domain-app-jms/README.md#quickstart-run-guide) to have a fully running stack in minutes.
+Install docker engine and docker compose and follow this [quick start guide](https://github.com/bzon/docker-oracle-weblogic/tree/master/OracleWeblogic/weblogic-samples/1221-app-jms-domain#quickstart-run-guide) to have a fully running stack in minutes.
 
 ## General Usage Guide
 
