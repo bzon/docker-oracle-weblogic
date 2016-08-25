@@ -10,35 +10,38 @@ services:
 
   # Deploys the AdminServer
   adminserver:
-    image: dockerhub.accenture.com/adop-afpo/oracle-weblogic:1221-app-jms-domain
+    container_name: adminserver
+    image: 1221-app-jms-domain
     restart: always
     environment:
-      DS_NAME: "MySqlDS"
-      DS_DB_TYPE: "mysql"
-      DS_DB_NAME: "docker-db"
-      DS_JNDI_NAME: "jdbc/MySqlDS"
-      DS_JDBC_DRIVER: "com.mysql.jdbc.Driver"
-      DS_JDBC_URL: "jdbc:mysql://database:3306/docker-db"
-      DS_DB_HOST: "database"
-      DS_DB_PORT: "3306"
-      DS_DB_USER: "root"
-      DS_DB_PASSWORD: "root"
+      DS_NAME: "Oracle"
+      DS_DB_TYPE: "Oracle"
+      DS_DB_NAME: "dockerdb"
+      DS_JNDI_NAME: "jdbc/oracleDatabase"
+      DS_JDBC_DRIVER: "oracle.jdbc.driver.OracleDriver"
+      DS_JDBC_URL: "jdbc:oracle:thin:system/password123@oracledb:1521:XE"
+      DS_DB_HOST: "oracledb"
+      DS_DB_PORT: "1521"
+      DS_DB_USER: "system"
+      DS_DB_PASSWORD: "password123"
+    ports:
+      - "8001:8001"
     networks:
       - *network
 
   # Deploys the Database Service
   database:
-    image: mysql:5.7
+    container_name: oracledb
+    image: oracle/database:11.2.0.2-xe
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_USER: "mysql"
-      MYSQL_PASSWORD: "mysqlpwd"
-      MYSQL_DATABASE: "docker-db"
+      ORACLE_PASSWORD: "password123"
+      ORACLE_DATABASE: "oracledb"
     ports:
-       - "3306:3306"
+      - "1521:1521"
+      - "8080:8080"
     networks:
-       - *network
+      - *network
 
   # WebTier for load balancing requests to cluster
   webtier:
