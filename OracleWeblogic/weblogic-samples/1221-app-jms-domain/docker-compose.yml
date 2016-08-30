@@ -34,6 +34,7 @@ services:
     container_name: oracledb
     image: oracle/database:11.2.0.2-xe
     restart: always
+    shm_size: 1G
     environment:
       ORACLE_PASSWORD: "password123"
       ORACLE_DATABASE: "oracledb"

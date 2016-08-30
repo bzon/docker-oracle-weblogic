@@ -57,7 +57,7 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 
 	- Deploy Oracle XE
 	```bash
-	docker run -d --shm-size=1g -e ORACLE_PWD=password123 oracle-db-11-xe
+	 docker run --name=oracledb -d --shm-size=1g -p 1521:1521 -p 8080:8080 oracle/database:11.2.0.2-xe
 	```
 	- Deploy Weblogic and link it to MySQL
 	```bash
@@ -67,7 +67,7 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
            -e DS_DB_TYPE="Oracle" \
            -e DS_DB_NAME="dockerdb" \
            -e DS_JNDI_NAME="jdbc/oracleDatabase" \
-	   -e DS_JDBC_DRIVER="oracle.jdbc.driver.OracleDriver" \
+           -e DS_JDBC_DRIVER="oracle.jdbc.driver.OracleDriver" \
            -e DS_DB_HOST="oracledb" \
            -e DS_DB_USER="system" \
            -e DS_JDBC_URL="jdbc:oracle:thin:system/password123@oracledb:1521:XE" \
