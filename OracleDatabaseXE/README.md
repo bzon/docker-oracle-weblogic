@@ -1,9 +1,12 @@
-Quickstart Run Guide
+# Quickstart Run Guide
 
-Using Docker Run:
+## Using Docker Run
 
-1. Build Oracle XE
+1. Build Oracle XE image.  
+   ```bash
    docker build -t oracle-db-11-xe .
-
-2. Deploy Oracle XE
-    docker run -d --shm-size=1g -e ORACLE_PWD=<password> oracle-db-11-xe
+   ```
+2. Deploy Oracle XE.  
+   ```bash
+   docker run -d --shm-size=1g -e ORACLE_PWD=<password> oracle-db-11-xe
+   ```
