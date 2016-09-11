@@ -53,34 +53,28 @@ Please see the [Official Oracle Weblogic Whitepaper](http://www.oracle.com/us/pr
 	```bash
 	docker run -p 8001:8001 -d 1221-app-jms-domain
 	```
-- Option B - Connecting weblogic container to a MySQL database
+- Option B - Connecting weblogic container to a Oracle database
 
-	- Deploy MySQL
+	- Deploy Oracle XE
 	```bash
-	docker run --name mysql \
-		-e MYSQL_ROOT_PASSWORD=root \
-		-e MYSQL_USER=mysql \
-		-e MYSQL_PASSWORD=mysqlpwd \
-		-e MYSQL_DATABASE=dockerdb \
-		-p 3306:3306 \
-		-d mysql:5.7
+	 docker run --name=oracledb -d --shm-size=1g -p 1521:1521 -p 8080:8080 oracle/database:11.2.0.2-xe
 	```
 	- Deploy Weblogic and link it to MySQL
 	```bash
 	docker run --name adminserver \
-		--link mysql:mysql \
-		-e DS_NAME="mysqlds" \
-		-e DS_DB_TYPE="mysql" \
-		-e DS_DB_NAME="dockerdb" \
-		-e DS_JNDI_NAME="jdbc/MySqlDS" \
-		-e DS_JDBC_DRIVER="com.mysql.jdbc.Driver" \
-		-e DS_DB_HOST="mysql" \
-		-e DS_DB_USER="root" \
-		-e DS_JDBC_URL="jdbc:mysql://mysql:3306/dockerdb" \
-		-e DS_DB_PASSWORD="root" \
-		-e DS_DB_PORT="3306" \
-		-p 8001:8001 \
-		-d 1221-app-jms-domain
+           --link oracledb:oracledb \
+           -e DS_NAME="Oracle" \
+           -e DS_DB_TYPE="Oracle" \
+           -e DS_DB_NAME="dockerdb" \
+           -e DS_JNDI_NAME="jdbc/oracleDatabase" \
+           -e DS_JDBC_DRIVER="oracle.jdbc.driver.OracleDriver" \
+           -e DS_DB_HOST="oracledb" \
+           -e DS_DB_USER="system" \
+           -e DS_JDBC_URL="jdbc:oracle:thin:system/password123@oracledb:1521:XE" \
+           -e DS_DB_PASSWORD="password123" \
+           -e DS_DB_PORT="1521" \
+           -p 8001:8001 \
+           -d 1221-app-jms-domain
 	```
 
 ### Using Docker compose or simplifying orchestration
